@@ -100,7 +100,7 @@ puppeteer.launch()
     const api = requires.concat(objects);
     const json = JSON.stringify(api, null, 2);
 
-    fileSystem.writeFile('unity_api.json', json);
+    fileSystem.writeFile('unity_api.json', json, (error) => { console.log("Error when writing the json file") });
 
-    console.log("Finish writing json file");
+    console.log("Finish");
   });
