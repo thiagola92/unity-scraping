@@ -23,6 +23,8 @@ function getRequires(contentAPI) {
       type: 'require'
     });
   }
+
+  console.log("Finish getting requires (" + requires.length + " requires)");
 }
 
 function getPages(contentAPI) {
@@ -40,6 +42,8 @@ function getPages(contentAPI) {
       descriptionMoreURL: linkAPI + pageLink
     });
   }
+
+  console.log("Finish getting pages from objects (" + objects.length + " pages)");
 }
 
 function getDescription(content) {
@@ -74,6 +78,8 @@ async function getObjects(browser) {
     object.description = getDescription(content);
     object.type = getType(content);
   }
+
+  console.log("Finish getting objects informations (" + objects.length + " objects)");
 }
 
 puppeteer.launch()
@@ -92,9 +98,9 @@ puppeteer.launch()
     await browser.close();
 
     const api = requires.concat(objects);
-    const json = JSON.stringify(api);
-    console.log(json);
+    const json = JSON.stringify(api, null, 2);
 
     fileSystem.writeFile('unity_api.json', json);
 
+    console.log("Finish writing json file");
   });
