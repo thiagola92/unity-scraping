@@ -1,0 +1,570 @@
+[
+  {
+    "text": "UnityEngine",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Accessibility",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Advertisements",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.AI",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Analytics",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Android",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Animations",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Apple",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Apple.ReplayKit",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Assertions",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Assertions.Comparers",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Assertions.Must",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Audio",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.CrashReportHandler",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Diagnostics",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Events",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.EventSystems",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Experimental",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Experimental.AI",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Experimental.Animations",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Experimental.Audio",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Experimental.GlobalIllumination",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Experimental.LowLevel",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Experimental.Networking",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Experimental.Networking.PlayerConnection",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Experimental.Playables",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Experimental.PlayerLoop",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Experimental.Rendering",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Experimental.TerrainAPI",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Experimental.U2D",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Experimental.UIElements",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Experimental.UIElements.StyleEnums",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Experimental.UIElements.StyleSheets",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Experimental.VFX",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Experimental.Video",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Experimental.XR",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Experimental.XR.Interaction",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.iOS",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Jobs",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Networking",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Networking.Match",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Networking.NetworkSystem",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Networking.PlayerConnection",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Networking.Types",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Playables",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Profiling",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Profiling.Memory",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Profiling.Memory.Experimental",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Purchasing",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Purchasing.Extension",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Rendering",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.SceneManagement",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Scripting",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Serialization",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.SocialPlatforms",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.SocialPlatforms.GameCenter",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.SpatialTracking",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Sprites",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.TestTools",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.TestTools.Constraints",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.TestTools.Utils",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.TextCore",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.TextCore.LowLevel",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Tilemaps",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Timeline",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.tvOS",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.U2D",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.UI",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Video",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Windows",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.Windows.Speech",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.WSA",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.XR",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.XR.WSA",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.XR.WSA.Input",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.XR.WSA.Persistence",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.XR.WSA.Sharing",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.XR.WSA.WebCam",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Advertisements",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.AI",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Analytics",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Android",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.AnimatedValues",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Animations",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Build",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Build.Content",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Build.Player",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Build.Reporting",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Callbacks",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Compilation",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.CrashReporting",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Events",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.EventSystems",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Experimental",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Experimental.AssetImporters",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Experimental.Networking",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Experimental.Networking.PlayerConnection",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Experimental.Rendering",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Experimental.SceneManagement",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Experimental.TerrainAPI",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Experimental.U2D",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Experimental.UIElements",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Experimental.UIElements.GraphView",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.IMGUI",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.IMGUI.Controls",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.iOS",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.iOS.Xcode",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.iOS.Xcode.Extensions",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Media",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.MemoryProfiler",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Networking",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Networking.PlayerConnection",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.PackageManager",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.PackageManager.Requests",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Playables",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Presets",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Profiling.Memory",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Profiling.Memory.Experimental",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Purchasing",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Rendering",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.SceneManagement",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Sprites",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.TestTools",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Timeline",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.U2D",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.UI",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.VersionControl",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.XR",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.XR.Daydream",
+    "type": "require"
+  },
+  {
+    "text": "Unity",
+    "type": "require"
+  },
+  {
+    "text": "Unity.Burst",
+    "type": "require"
+  },
+  {
+    "text": "Unity.Collections",
+    "type": "require"
+  },
+  {
+    "text": "Unity.Collections.LowLevel",
+    "type": "require"
+  },
+  {
+    "text": "Unity.Collections.LowLevel.Unsafe",
+    "type": "require"
+  },
+  {
+    "text": "Unity.IO.LowLevel",
+    "type": "require"
+  },
+  {
+    "text": "Unity.IO.LowLevel.Unsafe",
+    "type": "require"
+  },
+  {
+    "text": "Unity.Jobs",
+    "type": "require"
+  },
+  {
+    "text": "Unity.Jobs.LowLevel",
+    "type": "require"
+  },
+  {
+    "text": "Unity.Jobs.LowLevel.Unsafe",
+    "type": "require"
+  },
+  {
+    "text": "Unity.Profiling",
+    "type": "require"
+  },
+  {
+    "text": "Other",
+    "type": "require"
+  }
+]

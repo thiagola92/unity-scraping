@@ -1,53 +1,125 @@
 const puppeteer = require('puppeteer');
 const fileSystem = require('fs');
 
+let requires = [];  // require
+let objects = []; // objects, classes, enumerations
+let properties = []; // obj.propertyName
+
+let methods = []; // temporary information
+let signatures = []; // obj.methodName(x, y, z);
+
 const linkAPI = 'https://docs.unity3d.com/ScriptReference/'
 
-let objects = [];
-let requires = [];
+const everything = `([_"',\\.\\w <>=\\-/:\\)\\(\\n\\r\\[\\];\\?}{.]*?)`
+
+puppeteer.launch()
+  .then(async browser => {
+    const page = (await browser.pages())[0];
+
+    await page.goto(linkAPI + 'index.html');
+
+    const content =  await page.content();
+    const regexAPI = /<h2>Scripting API<\/h2>(.*)<div class="mCSB_scrollTools" style="position: absolute; display: none;">/g;
+    const contentAPI = regexAPI.exec(content)[1];
+
+    //objects.push({
+    //  text: "Input",
+    //  descriptionMoreURL: "https://docs.unity3d.com/ScriptReference/Input.html",
+    //  description: "Interface into the Input system.",
+    //  type: "class"
+    //});
+
+    await getRequires(contentAPI);
+    await getPages(contentAPI);
+    await getObjects(browser);
+    await browser.close();
+
+    console.log("Finish");
+  });
+
+function toFile(name, api) {
+  const json = JSON.stringify(api, null, 2);
+
+  fileSystem.writeFile(name, json, (error) => {
+    if(error == null)
+      return
+
+    console.log("Error when writing the json file");
+    console.log(error);
+  });
+}
 
 function getRequires(contentAPI) {
-  const regexRequire = /<span>([a-zA-Z\.]*)<\/span>/g;
-  let contentRequire = regexRequire.exec(contentAPI);
+  const regex = /<span>([\w_\-\.<>]*?)<\/span>/g;
+  let contentRequire = regex.exec(contentAPI);
 
   while(contentRequire != null) {
     const requireName = contentRequire[1];
 
-    contentRequire = regexRequire.exec(contentAPI);
+    contentRequire = regex.exec(contentAPI);
 
     if(requireName === 'Classes' || requireName === 'Interfaces' || requireName === 'Enumerations' || requireName === 'Attributes' || requireName === 'Assemblies')
-    continue;
+      continue;
 
     requires.push({
       text: requireName,
       type: 'require'
     });
+
+    console.clear();
+    console.log(requireName);
   }
 
-  console.log("Finish getting requires (" + requires.length + " requires)");
+  toFile("unity_requires.json", requires);
+  requires = null;
 }
 
 function getPages(contentAPI) {
-  const regexPage = /<a href="([a-zA-Z\.]*)" id="" class="">([a-zA-Z]*)<\/a>/g;
-  let contentPage = regexPage.exec(contentAPI);
+  const regex = /<a href="([\w_\-\.<>]*?)" id="" class="">([\w]*?)<\/a>/g;
+  let contentPage = regex.exec(contentAPI);
 
   while(contentPage != null) {
     const pageLink = contentPage[1];
     const pageName = contentPage[2];
 
-    contentPage = regexPage.exec(contentAPI);
+    contentPage = regex.exec(contentAPI);
 
     objects.push({
       text: pageName,
       descriptionMoreURL: linkAPI + pageLink
     });
   }
+}
 
-  console.log("Finish getting pages from objects (" + objects.length + " pages)");
+async function getObjects(browser) {
+  for(const object of objects) {
+    const page = await browser.newPage();
+    await page.goto(object.descriptionMoreURL);
+
+    const content = await page.content();
+    await page.close()
+
+    object.description = getDescription(content);
+    object.type = getType(content);
+
+    console.clear();
+    console.log(object.text);
+
+    getStaticProperties(content, object.text);
+    getStaticMethods(content, object.text);
+  }
+
+  toFile("unity_properties.json", properties);
+  toFile("unity_objects.json", objects);
+
+  properties = null;
+  objects = null;
+
+  await getSignatures(browser);
 }
 
 function getDescription(content) {
-  const regex = /<h2>Description<\/h2><p>([",\.\w <>=\-/:\)\(\n\r\[\];]*?)<\/p>/g;
+  const regex = /<h2>Description<\/h2><p>([_"',\.\w <>=\-/:\)\(\n\r\[\];\?}{.]*?)<\/p>/g;
   const description = regex.exec(content);
 
   if(description == null)
@@ -66,41 +138,128 @@ function getType(content) {
   return type[1];
 }
 
-async function getObjects(browser) {
+function getStaticProperties(content, text) {
+  const regex = /<div class="subsection"><h2>Static Properties<\/h2>([_"',\.\w <>=\-/:\)\(\n\r\[\];\?}{.]*?)<\/div>/g;
+  const contentProperties = regex.exec(content);
 
-  for(const object of objects) {
-    const page = await browser.newPage();
-    await page.goto(object.descriptionMoreURL);
+  if(contentProperties == null)
+    return null;
 
-    const content = await page.content();
-    await page.close()
-
-    object.description = getDescription(content);
-    object.type = getType(content);
-  }
-
-  console.log("Finish getting objects informations (" + objects.length + " objects)");
+  getProperties(contentProperties[1], text);
 }
 
-puppeteer.launch()
-  .then(async browser => {
-    const page = (await browser.pages())[0];
+function getProperties(content, text) {
+  const regex = /<td class="lbl"><a href="([\w\.\-]*?)">([\w]*?)<\/a><\/td><td class="desc">([_"',\.\w <>=\-/:\)\(\n\r\[\];\?}{.]*?)<\/td>/g;
+  let contentProperty = regex.exec(content);
 
-    await page.goto(linkAPI + 'index.html');
+  while(contentProperty != null) {
+    const propertyName = text + '.' + contentProperty[2];
+    const propertyLink = linkAPI + contentProperty[1];
+    const propertyDescription = contentProperty[3];
 
-    const content =  await page.content();
-    const regexAPI = /<h2>Scripting API<\/h2>(.*)<div class="mCSB_scrollTools" style="position: absolute; display: none;">/g;
-    const contentAPI = regexAPI.exec(content)[1];
+    properties.push({
+      text: propertyName,
+      description: propertyDescription,
+      descriptionMoreURL: propertyLink,
+      type: "property"
+    });
 
-    await getRequires(contentAPI);
-    await getPages(contentAPI);
-    await getObjects(browser);
-    await browser.close();
+    console.clear();
+    console.log(propertyName);
 
-    const api = requires.concat(objects);
-    const json = JSON.stringify(api, null, 2);
+    contentProperty = regex.exec(content);
+  }
+}
 
-    fileSystem.writeFile('unity_api.json', json, (error) => { console.log("Error when writing the json file") });
+function getStaticMethods(content, text) {
+  const regex = /<div class="subsection"><h2>Static Methods<\/h2>([_"',\.\w <>=\-/:\)\(\n\r\[\];\?}{.]*?)<\/div>/g;
+  const contentMethods = regex.exec(content);
 
-    console.log("Finish");
-  });
+  if(contentMethods == null)
+    return null;
+
+  getMethods(contentMethods[1], text);
+}
+
+function getMethods(content, text) {
+  const regex = /<td class="lbl"><a href="([\w\.\-]*?)">([\w]*?)<\/a><\/td><td class="desc">([_"',\.\w <>=\-/:\)\(\n\r\[\];\?}{.]*?)<\/td>/g;
+  let contentMethod = regex.exec(content);
+
+  while(contentMethod != null) {
+    const methodName = text + '.' + contentMethod[2];
+    const methodLink = linkAPI + contentMethod[1];
+    const methodDescription = contentMethod[3];
+
+    methods.push({
+      text: methodName,
+      description: methodDescription,
+      descriptionMoreURL: methodLink,
+      type: "method"
+    });
+
+    console.clear();
+    console.log(methodName);
+
+    contentMethod = regex.exec(content);
+  }
+}
+
+async function getSignatures(browser) {
+  for(const method of methods) {
+    const page = await browser.newPage()
+    await page.goto(method.descriptionMoreURL);
+
+    const content = await page.content();
+    await page.close();
+
+    const regex = /<div class="signature-CS sig-block">([_"',\.\w <>=\-/:\)\(\n\r\[\];\?}{.]*?)<\/div>/g;
+    let sign = regex.exec(content);
+
+    while(sign != null) {
+      let signature = method.text + getSignature(sign[1]);
+
+      signatures.push({
+        snippet: signature,
+        description: method.description,
+        descriptionMoreURL: method.descriptionMoreURL,
+        type: "method"
+      })
+
+      console.clear();
+      console.log(signature);
+
+      sign = regex.exec(content);
+    }
+
+    method = null;
+  }
+
+  toFile("unity_signatures.json", signatures);
+
+  methods = null;
+  signatures = null;
+}
+
+function getSignature(content) {
+  let signature = "(";
+
+  const regex = /<span class="sig-kw">([_"',\.\w <>=\-/:\)\(\n\r\[\];\?}{.]*?)<\/span>/g;
+  regex.exec(content); // skipping the method name
+
+  let parameter_number = 1;
+  let parameter = regex.exec(content);
+
+  while(parameter != null) {
+    signature = signature + "${" + parameter_number + ":" + parameter[1] + "}";
+
+    parameter_number = parameter_number + 1;
+    parameter = regex.exec(content);
+
+    if(parameter != null)
+      signature = signature + ", ";
+  }
+
+  signature = signature + ");"
+
+  return signature;
+}
