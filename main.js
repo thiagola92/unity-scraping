@@ -22,13 +22,6 @@ puppeteer.launch()
     const regexAPI = /<h2>Scripting API<\/h2>(.*)<div class="mCSB_scrollTools" style="position: absolute; display: none;">/g;
     const contentAPI = regexAPI.exec(content)[1];
 
-    //objects.push({
-    //  text: "Input",
-    //  descriptionMoreURL: "https://docs.unity3d.com/ScriptReference/Input.html",
-    //  description: "Interface into the Input system.",
-    //  type: "class"
-    //});
-
     await getRequires(contentAPI);
     await getPages(contentAPI);
     await getObjects(browser);
