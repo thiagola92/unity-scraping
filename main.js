@@ -252,7 +252,7 @@ function getSignature(content) {
       signature = signature + ", ";
   }
 
-  signature = signature + ");"
+  signature = signature + ")"
 
   return signature;
 }
