@@ -71,7 +71,6 @@ function getRequires(contentAPI) {
 
 function getPages(contentAPI) {
   const regex = new RegExp('<a href="' + captureLink + '" id="" class="">' + captureName + '<\\/a>', 'g')
-  //const regex = /<a href="([\w_\-\.<>]*?)" id="" class="">([\w]*?)<\/a>/g;
   let contentPage = regex.exec(contentAPI);
 
   while(contentPage != null) {
@@ -116,7 +115,6 @@ async function getObjects(browser) {
 
 function getDescription(content) {
   const regex = new RegExp('<h2>Description<\\/h2><p>' + captureEverything + '<\\/p>', 'g');
-  //const regex = /<h2>Description<\/h2><p>([_"',\.\w <>=\-/:\)\(\n\r\[\];\?}{.]*?)<\/p>/g;
   const description = regex.exec(content);
 
   if(description == null)
@@ -127,7 +125,6 @@ function getDescription(content) {
 
 function getType(content) {
   const regex = new RegExp('<p class="cl mb0 left mr10">' + captureName + '(?: |<\\/p>)');
-  //const regex = /<p class="cl mb0 left mr10">([\w]*?)(?: |<\/p>)/g;
   const type = regex.exec(content);
 
   if(type == null)
@@ -138,7 +135,6 @@ function getType(content) {
 
 function getStaticProperties(content, text) {
   const regex = new RegExp('<div class="subsection"><h2>Static Properties<\\/h2>' + captureEverything + '<\\/div>', 'g');
-  //const regex = /<div class="subsection"><h2>Static Properties<\/h2>([_"',\.\w <>=\-/:\)\(\n\r\[\];\?}{.]*?)<\/div>/g;
   const contentProperties = regex.exec(content);
 
   if(contentProperties == null)
@@ -149,7 +145,6 @@ function getStaticProperties(content, text) {
 
 function getProperties(content, text) {
   const regex = new RegExp('<td class="lbl"><a href="' + captureLink + '">' + captureName + '<\/a><\/td><td class="desc">' + captureEverything + '<\\/td>', 'g');
-  //const regex = /<td class="lbl"><a href="([\w\.\-]*?)">([\w]*?)<\/a><\/td><td class="desc">([_"',\.\w <>=\-/:\)\(\n\r\[\];\?}{.]*?)<\/td>/g;
   let contentProperty = regex.exec(content);
 
   while(contentProperty != null) {
@@ -173,7 +168,6 @@ function getProperties(content, text) {
 
 function getStaticMethods(content, text) {
   const regex = new RegExp('<div class="subsection"><h2>Static Methods<\\/h2>' + captureEverything + '<\\/div>', 'g');
-  //const regex = /<div class="subsection"><h2>Static Methods<\/h2>([_"',\.\w <>=\-/:\)\(\n\r\[\];\?}{.]*?)<\/div>/g;
   const contentMethods = regex.exec(content);
 
   if(contentMethods == null)
@@ -184,7 +178,6 @@ function getStaticMethods(content, text) {
 
 function getMethods(content, text) {
   const regex = new RegExp('<td class="lbl"><a href="' + captureLink + '">' + captureName + '<\\/a><\\/td><td class="desc">' + captureEverything + '<\\/td>', 'g');
-  //const regex = /<td class="lbl"><a href="([\w\.\-]*?)">([\w]*?)<\/a><\/td><td class="desc">([_"',\.\w <>=\-/:\)\(\n\r\[\];\?}{.]*?)<\/td>/g;
   let contentMethod = regex.exec(content);
 
   while(contentMethod != null) {
@@ -215,7 +208,6 @@ async function getSignatures(browser) {
     await page.close();
 
     const regex = new RegExp('<div class="signature-CS sig-block">' + captureEverything + '<\\/div>', 'g');
-    //const regex = /<div class="signature-CS sig-block">([_"',\.\w <>=\-/:\)\(\n\r\[\];\?}{.]*?)<\/div>/g;
     let sign = regex.exec(content);
 
     while(sign != null) {
@@ -245,7 +237,6 @@ function getSignature(content) {
   let signature = "(";
 
   const regex = new RegExp('<span class="sig-kw">' + captureEverything + '<\/span>', 'g');
-  //const regex = /<span class="sig-kw">([_"',\.\w <>=\-/:\)\(\n\r\[\];\?}{.]*?)<\/span>/g;
   regex.exec(content); // skipping the method name
 
   let parameter_number = 1;
