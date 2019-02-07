@@ -1,7 +1,7 @@
 {
-  "name": "unity_syntax_api",
+  "name": "unity-scraping",
   "version": "1.0.0",
-  "description": "Web scrapping to get unity api",
+  "description": "Web scraping to get unity api",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

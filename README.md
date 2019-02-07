@@ -6,7 +6,7 @@ Web scraping on page https://docs.unity3d.com/ScriptReference/index.html
 - Install [**node.js**](https://nodejs.org/en/)  
 - Open terminal
   - Go to **unity-scrapping** directory  
-  - `npm install puppeteer`  
+  - `npm install`  
   - `node main.js`  
     - Wait finish (can take hours)  
     - If it fails, start again  
