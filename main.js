@@ -25,12 +25,37 @@ puppeteer.launch()
     const contentAPI = regexAPI.exec(content)[1];
 
     await getRequires(contentAPI);
-    await getPages(contentAPI);
-    await getObjects(browser);
+    await getObjects(contentAPI);
+    await getObjectsInfo(browser);
     await browser.close();
+
+    concatAPI();
 
     console.log("Finish");
   });
+
+function concatAPI() {
+  let api = [];
+
+  requires = require('./unity_requires');
+  api = api.concat(requires);
+  requires = null; // free memory
+
+  objects = require('./unity_objects');
+  api = api.concat(objects);
+  objects = null; // free memory
+
+  properties = require('./unity_properties');
+  api = api.concat(properties);
+  properties = null; // free memory
+
+  signatures = require('./unity_signatures');
+  api = api.concat(signatures);
+  signatures = null; // free memory
+
+  toFile("unity_api.json", api);
+  api = null; // free memory
+}
 
 function toFile(name, api) {
   const json = JSON.stringify(api, null, 2);
@@ -66,10 +91,10 @@ function getRequires(contentAPI) {
   }
 
   toFile("unity_requires.json", requires);
-  requires = null;
+  requires = null; // free memory
 }
 
-function getPages(contentAPI) {
+function getObjects(contentAPI) {
   const regex = new RegExp('<a href="' + captureLink + '" id="" class="">' + captureName + '<\\/a>', 'g')
   let contentPage = regex.exec(contentAPI);
 
@@ -86,7 +111,7 @@ function getPages(contentAPI) {
   }
 }
 
-async function getObjects(browser) {
+async function getObjectsInfo(browser) {
   for(const object of objects) {
     const page = await browser.newPage();
     await page.goto(object.descriptionMoreURL);
@@ -94,8 +119,11 @@ async function getObjects(browser) {
     const content = await page.content();
     await page.close()
 
-    object.description = getDescription(content);
-    object.type = getType(content);
+    const description = new RegExp('<h2>Description<\\/h2><p>' + captureEverything + '<\\/p>', 'g');
+    const type = new RegExp('<p class="cl mb0 left mr10">' + captureName + '(?: |<\\/p>)');
+
+    object.description = get(description, content);
+    object.type = get(type, content);
 
     console.clear();
     console.log(object.text);
@@ -107,30 +135,19 @@ async function getObjects(browser) {
   toFile("unity_properties.json", properties);
   toFile("unity_objects.json", objects);
 
-  properties = null;
-  objects = null;
+  properties = null; // free memory
+  objects = null; // free memory
 
   await getSignatures(browser);
 }
 
-function getDescription(content) {
-  const regex = new RegExp('<h2>Description<\\/h2><p>' + captureEverything + '<\\/p>', 'g');
-  const description = regex.exec(content);
+function get(regex, content) {
+  const search = regex.exec(content);
 
-  if(description == null)
-    return null
+  if(search == null)
+    return null;
 
-  return description[1];
-}
-
-function getType(content) {
-  const regex = new RegExp('<p class="cl mb0 left mr10">' + captureName + '(?: |<\\/p>)');
-  const type = regex.exec(content);
-
-  if(type == null)
-    return null
-
-  return type[1];
+  return search[1];
 }
 
 function getStaticProperties(content, text) {
@@ -229,8 +246,8 @@ async function getSignatures(browser) {
 
   toFile("unity_signatures.json", signatures);
 
-  methods = null;
-  signatures = null;
+  methods = null; // free memory
+  signatures = null; // free memory
 }
 
 function getSignature(content) {
