@@ -8,7 +8,4 @@ Web scraping on page https://docs.unity3d.com/ScriptReference/index.html
   - Go to **unity-scrapping** directory  
   - `npm install`  
   - `node main.js`  
-    - Wait finish (can take hours)  
-    - If it fails, start again  
-  - `node concat_api.js`  
 - Unity api inside **unity_api.json**  
