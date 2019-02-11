@@ -16588,6 +16588,12 @@
     "type": "class"
   },
   {
+    "text": "GridPaintSortingAttribute",
+    "descriptionMoreURL": "https://docs.unity3d.com/ScriptReference/GridPaintSortingAttribute.html",
+    "description": "Use this attribute to add an option to customize the sorting of Active Targets in the Active Tilemap list of the Tile Palette window.",
+    "type": "class"
+  },
+  {
     "text": "InitializeOnLoadAttribute",
     "descriptionMoreURL": "https://docs.unity3d.com/ScriptReference/InitializeOnLoadAttribute.html",
     "description": "Allow an editor class to be initialized when Unity loads without action from the user.",

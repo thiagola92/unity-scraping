@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-const fileSystem = require('fs');
+const { concatAPI, toFile } = require('./utility');
 
 let requires = [];  // require
 let objects = []; // objects, classes, enumerations
@@ -25,49 +25,14 @@ puppeteer.launch()
     const contentAPI = regexAPI.exec(content)[1];
 
     await getRequires(contentAPI);
-    await getObjects(contentAPI);
-    await getObjectsInfo(browser);
+    //await getObjects(contentAPI);
+    //await getObjectsInfo(browser);
     await browser.close();
 
     concatAPI();
 
     console.log("Finish");
   });
-
-function concatAPI() {
-  let api = [];
-
-  requires = require('./unity_requires');
-  api = api.concat(requires);
-  requires = null; // free memory
-
-  objects = require('./unity_objects');
-  api = api.concat(objects);
-  objects = null; // free memory
-
-  properties = require('./unity_properties');
-  api = api.concat(properties);
-  properties = null; // free memory
-
-  signatures = require('./unity_signatures');
-  api = api.concat(signatures);
-  signatures = null; // free memory
-
-  toFile("unity_api.json", api);
-  api = null; // free memory
-}
-
-function toFile(name, api) {
-  const json = JSON.stringify(api, null, 2);
-
-  fileSystem.writeFile(name, json, (error) => {
-    if(error == null)
-      return
-
-    console.log("Error when writing the json file");
-    console.log(error);
-  });
-}
 
 function getRequires(contentAPI) {
   const regex = /<span>([\w_\-\.<>]*?)<\/span>/g;
