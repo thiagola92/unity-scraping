@@ -25,8 +25,8 @@ puppeteer.launch()
     const contentAPI = regexAPI.exec(content)[1];
 
     await getRequires(contentAPI);
-    //await getObjects(contentAPI);
-    //await getObjectsInfo(browser);
+    await getObjects(contentAPI);
+    await getObjectsInfo(browser);
     await browser.close();
 
     concatAPI();

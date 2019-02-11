@@ -10,7 +10,7 @@ function concatAPI() {
 
   toFile("api.json", api);
 
-  //deleteTemporaryFiles();
+  deleteTemporaryFiles();
 }
 
 function deleteTemporaryFiles() {
