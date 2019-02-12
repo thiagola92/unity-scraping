@@ -100,6 +100,10 @@
     "type": "require"
   },
   {
+    "text": "UnityEngine.Experimental.ParticleSystemJobs",
+    "type": "require"
+  },
+  {
     "text": "UnityEngine.Experimental.Playables",
     "type": "require"
   },
@@ -144,10 +148,6 @@
     "type": "require"
   },
   {
-    "text": "UnityEngine.Experimental.XR.Interaction",
-    "type": "require"
-  },
-  {
     "text": "UnityEngine.iOS",
     "type": "require"
   },
@@ -156,15 +156,15 @@
     "type": "require"
   },
   {
+    "text": "UnityEngine.Lumin",
+    "type": "require"
+  },
+  {
     "text": "UnityEngine.Networking",
     "type": "require"
   },
   {
     "text": "UnityEngine.Networking.Match",
-    "type": "require"
-  },
-  {
-    "text": "UnityEngine.Networking.NetworkSystem",
     "type": "require"
   },
   {
@@ -224,10 +224,6 @@
     "type": "require"
   },
   {
-    "text": "UnityEngine.SpatialTracking",
-    "type": "require"
-  },
-  {
     "text": "UnityEngine.Sprites",
     "type": "require"
   },
@@ -256,10 +252,6 @@
     "type": "require"
   },
   {
-    "text": "UnityEngine.Timeline",
-    "type": "require"
-  },
-  {
     "text": "UnityEngine.tvOS",
     "type": "require"
   },
@@ -269,6 +261,10 @@
   },
   {
     "text": "UnityEngine.UI",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.UIElements",
     "type": "require"
   },
   {
@@ -289,6 +285,10 @@
   },
   {
     "text": "UnityEngine.XR",
+    "type": "require"
+  },
+  {
+    "text": "UnityEngine.XR.Provider",
     "type": "require"
   },
   {
@@ -368,6 +368,10 @@
     "type": "require"
   },
   {
+    "text": "UnityEditor.EditorTools",
+    "type": "require"
+  },
+  {
     "text": "UnityEditor.Events",
     "type": "require"
   },
@@ -381,6 +385,10 @@
   },
   {
     "text": "UnityEditor.Experimental.AssetImporters",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.Experimental.GraphView",
     "type": "require"
   },
   {
@@ -468,6 +476,10 @@
     "type": "require"
   },
   {
+    "text": "UnityEditor.Profiling",
+    "type": "require"
+  },
+  {
     "text": "UnityEditor.Profiling.Memory",
     "type": "require"
   },
@@ -488,6 +500,10 @@
     "type": "require"
   },
   {
+    "text": "UnityEditor.ShortcutManagement",
+    "type": "require"
+  },
+  {
     "text": "UnityEditor.Sprites",
     "type": "require"
   },
@@ -496,15 +512,15 @@
     "type": "require"
   },
   {
-    "text": "UnityEditor.Timeline",
-    "type": "require"
-  },
-  {
     "text": "UnityEditor.U2D",
     "type": "require"
   },
   {
     "text": "UnityEditor.UI",
+    "type": "require"
+  },
+  {
+    "text": "UnityEditor.UIElements",
     "type": "require"
   },
   {

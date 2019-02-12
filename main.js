@@ -8,7 +8,7 @@ let properties = []; // obj.propertyName
 let methods = []; // temporary information
 let signatures = []; // obj.methodName(x, y, z);
 
-const linkAPI = 'https://docs.unity3d.com/ScriptReference/'
+const linkAPI = 'https://docs.unity3d.com/2019.1/Documentation/ScriptReference/'
 
 const captureEverything = `([_"',\\.\\w <>=\\-/:\\)\\(\\n\\r\\[\\];\\?}{.]*?)`; // Sometimes (.*) wasn't capturing everything...
 const captureLink = `([\\w\\.\\-]*?)`;
@@ -31,7 +31,7 @@ puppeteer.launch()
 
     concatAPI();
 
-    console.log("Finish");
+    console.log("Finished");
   });
 
 function getRequires(contentAPI) {
