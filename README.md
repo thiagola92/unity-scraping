@@ -7,5 +7,5 @@ Web scraping on page https://docs.unity3d.com/ScriptReference/index.html
 - Open terminal
   - Go to **unity-scrapping** directory  
   - `npm install`  
-  - `node --max-old-space-size=4096`  
+  - `node --max-old-space-size=4096 main.js`  
 - Unity api inside **api.json**  

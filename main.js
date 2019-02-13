@@ -8,9 +8,9 @@ let properties = []; // obj.propertyName
 let methods = []; // temporary information
 let signatures = []; // obj.methodName(x, y, z);
 
-const linkAPI = 'https://docs.unity3d.com/2019.1/Documentation/ScriptReference/'
+const linkAPI = 'https://docs.unity3d.com/2017.4/Documentation/ScriptReference/'
 
-const captureEverything = `([_"',\\.\\w <>=\\-/:\\)\\(\\n\\r\\[\\];\\?}{.]*?)`; // Sometimes (.*) wasn't capturing everything...
+const captureEverything = `([_"', <>=/:;}{.\\.\\w\\-\\)\\(\\n\\r\\[\\]\\?]*?)`; // Sometimes (.*) wasn't capturing everything...
 const captureLink = `([\\w\\.\\-]*?)`;
 const captureName = `([\\w]*?)`;
 
@@ -189,7 +189,14 @@ async function getSignatures(browser) {
     const content = await page.content();
     await page.close();
 
-    const regex = new RegExp('<div class="signature-CS sig-block">' + captureEverything + '<\\/div>', 'g');
+    // Unity 2017 you could choose between C# or JS
+    // The html could be
+    //  <div class="signature-CS sig-block" style="">
+    // or
+    //  <div class="signature-CS sig-block" style="display: none;">
+    const ignoreThisHTML = "[^>]*";
+
+    const regex = new RegExp('<div class="signature-CS sig-block"' + ignoreThisHTML + '>' + captureEverything + '<\\/div>', 'g');
     let sign = regex.exec(content);
 
     while(sign != null) {
