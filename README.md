@@ -16,7 +16,9 @@ It will navigate to unity website and read the HTML code to get what needed.
 ## Requires
 I will be reading this list  
 
-![require](img/require.png)  
+|                          |
+| ------------------------ |
+| ![require](img/require.png) | 
 
 The HTML format to find requires is  
 `<span>UnityEngine</span>`  
@@ -42,7 +44,9 @@ The HTML format to find requires is
 Objects can be class/enumerations/...  
 I will be reading this list again  
 
-![object](img/object.png)  
+|                          |
+| ------------------------ |
+| ![object](img/object.png) |
 
 The HTML format to find objects is  
 `<a href="Accessibility.VisionUtility.html" id="" class="">VisionUtility</a>`  
@@ -67,7 +71,9 @@ The HTML format to find objects is
 ## Objects Information
 Using the link we can access the object page and get more information about it  
 
-![objectInfo](img/objectinfo.png)  
+|                          |
+| ------------------------ |
+| ![objectInfo](img/objectinfo.png) |
 
 The HTML format to find the description is  
 `<h2>Description</h2><p>A class containing methods to assist with accessibility for users with different vision capabilities.</p>`  
@@ -103,7 +109,9 @@ Is the first text after the `<p>` tag
 ## Static Properties
 We can find static properties searching the table  
 
-![properties](img/properties.png)  
+|                          |
+| ------------------------ |
+| ![properties](img/properties.png) |
 
 The HTML format to find the propertie name, link, description   
 `<td class="lbl"><a href="AI.NavMesh.AllAreas.html">AllAreas</a></td><td class="desc">Area mask constant that includes all NavMesh areas.</td>`  
@@ -134,7 +142,9 @@ The HTML format to find the propertie name, link, description
 ## Static Methods
 We can find static methods searching the table  
 
-![methods](img/methods.png)  
+|                          |
+| ------------------------ |
+| ![methods](img/methods.png) | 
 
 The HTML format to find the method name, link, description   
 `<td class="lbl"><a href="AI.NavMesh.AllAreas.html">AllAreas</a></td><td class="desc">Area mask constant that includes all NavMesh areas.</td>`  
@@ -159,7 +169,9 @@ The HTML format to find the method name, link, description
 ## Signatures
 We can find the parameters from one signature because it's bold  
 
-![signatures](img/signatures.png)  
+|                          |
+| ------------------------ |
+| ![signatures](img/signatures.png) |
 
 The HTML format to find parameters is  
 `<span class="sig-kw">link</span></div>`  
